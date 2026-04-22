@@ -70,9 +70,12 @@ public class Collision : MonoBehaviour
     private void OnCollisionStay(UnityEngine.Collision collision)
     {
         //Debug.Log("you are grounded");
-        onGround = true;
-        HasDoubleJumped = false;
-        canDoubleJump = false;
+        if (collision.collider.CompareTag("floor"))
+        {
+            onGround = true;
+            HasDoubleJumped = false;
+            canDoubleJump = false;
+        }
     }
 
     public void SetMoveSpeed(float speed)

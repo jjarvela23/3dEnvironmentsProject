@@ -16,6 +16,11 @@ public class CoinCounter : MonoBehaviour
         Coins++;
     }
 
+    public int GetCoins()
+    {
+        return Coins;
+    }
+
     // Update is called once per frame
     void Update()
     {
