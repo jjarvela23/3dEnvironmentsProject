@@ -7,6 +7,7 @@ public class TransparentRoof : MonoBehaviour
     [SerializeField] private GameObject roof;
     [SerializeField] private GameObject Sun;
     [SerializeField] private GameObject HouseLight;
+    [SerializeField] private GameObject ceiling;
     private Color transparent;
     private Color original;
     void Start()
@@ -28,6 +29,7 @@ public class TransparentRoof : MonoBehaviour
         {
             //roof.GetComponent<MeshRenderer>().materials[0].SetColor("_Color", transparent);
             roof.GetComponent<MeshRenderer>().materials[0].color = transparent;
+            ceiling.GetComponent<MeshRenderer>().enabled = false;
             Sun.GetComponent<Light>().enabled = false;
             HouseLight.GetComponent<Light>().enabled = true;
         }
@@ -39,6 +41,7 @@ public class TransparentRoof : MonoBehaviour
         {
             //roof.GetComponent<MeshRenderer>().materials[0].SetColor("_Color", transparent);
             roof.GetComponent<MeshRenderer>().materials[0].color = original;
+            ceiling.GetComponent<MeshRenderer>().enabled = true;
             Sun.GetComponent<Light>().enabled = true;
             HouseLight.GetComponent<Light>().enabled = false;
         }

@@ -17,10 +17,11 @@ public class CollectCoin : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("touching coin");
-        CoinCounter.GetComponent<CoinCounter>().AddCoin();
-        audioplayer.GetComponent<AudioSource>().Play();
-        gameObject.SetActive(false);
+    {   if (other.tag == "Player")
+        {
+            CoinCounter.GetComponent<CoinCounter>().AddCoin();
+            audioplayer.GetComponent<AudioSource>().Play();
+            Destroy(gameObject);
+        }
     }
 }

@@ -1,28 +1,27 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class NPCdialogue : MonoBehaviour
+public class PurpleNPCScript : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     [SerializeField] private GameObject canvas;
     [SerializeField] private GameObject text1;
     [SerializeField] private GameObject text2;
     [SerializeField] private GameObject text3;
-    [SerializeField] private GameObject text4;
-    [SerializeField] private GameObject text5;
+    [SerializeField] private GameObject coin1;
+    [SerializeField] private GameObject coin2;
+    [SerializeField] private GameObject coin3;
     private int current = 0;
     InputAction talk;
-    [SerializeField] private CoinCounter coinCounter;
     void Start()
     {
-        talk  = InputSystem.actions.FindAction("Interact");
+        talk = InputSystem.actions.FindAction("Interact");
         canvas.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -31,6 +30,17 @@ public class NPCdialogue : MonoBehaviour
         {
             Debug.Log("touching");
             canvas.SetActive(true);
+        }
+        else if (other.tag == "ball")
+        {
+            canvas.SetActive(true);
+            text1.SetActive(false);
+            text2.SetActive(false);
+            text3.SetActive(true);
+            coin1.SetActive(true);
+            coin2.SetActive(true);
+            coin3.SetActive(true);
+            current = 2;
         }
 
     }
@@ -48,47 +58,21 @@ public class NPCdialogue : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             talk.started += Started;
-            talk.performed += Performed;
-            
         }
-    }
-
-    private void Performed(InputAction.CallbackContext obj)
-    {
-        
     }
 
     private void Started(InputAction.CallbackContext obj)
     {
-        if (coinCounter.GetCoins() >= 20)
-        {
-            text5.SetActive(true);
-            text1.SetActive(false);
-        }
-        if (current == 0)
+        if (current == 0 && !text3.activeSelf)
         {
             text1.SetActive(false);
             text2.SetActive(true);
             current++;
         }
-        else if (current == 1)
+        if (current == 2)
         {
             text2.SetActive(false);
-            text3.SetActive(true);
-            current++;
-        }
-        else if (current == 2)
-        {
-            text3.SetActive(false);
-            text4.SetActive(true);
-            current++;
-        }
-        else if (current == 3)
-        {
-            canvas.SetActive(false);
-            text1.SetActive(true);
-            text4.SetActive(false);
-            current = 0;
+            text1.SetActive(false);
         }
     }
 }

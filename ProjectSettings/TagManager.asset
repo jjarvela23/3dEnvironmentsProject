@@ -8,6 +8,7 @@ TagManager:
   - Dialoguebox
   - Npc
   - spawnpoint
+  - ball
   layers:
   - Default
   - TransparentFX

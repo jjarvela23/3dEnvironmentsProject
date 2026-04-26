@@ -24,6 +24,6 @@ public class CoinCounter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        coinText.text = "Total coins: " + Coins.ToString() + "/10";
+        coinText.text = "Total coins: " + Coins.ToString() + "/20";
     }
 }
