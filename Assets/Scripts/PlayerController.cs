@@ -33,7 +33,7 @@ public class Collision : MonoBehaviour
         MyCharacter.position += (new Vector3(moveDirection.x, 0f, moveDirection.y) * moveSpeed * Time.deltaTime);
         if (moveDirection != oldDirection)
         {
-            MyCharacter.rotation = Quaternion.LookRotation(new Vector3(moveDirection.x, 0f, moveDirection.y));
+                MyCharacter.rotation = Quaternion.LookRotation(new Vector3(moveDirection.x, 0f, moveDirection.y));
         }
         oldDirection = moveDirection;
         if (move.IsPressed())
@@ -85,4 +85,11 @@ public class Collision : MonoBehaviour
         moveSpeed = speed;
     }
 
+    private void OnCollisionEnter(UnityEngine.Collision collision)
+    {
+        if (collision.collider.CompareTag("Enemy"))
+        {
+            transform.position = new Vector3(-10, 1, 0);
+        }
+    }
 }

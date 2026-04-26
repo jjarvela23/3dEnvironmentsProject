@@ -64,8 +64,12 @@ public class NPCdialogue : MonoBehaviour
         {
             text5.SetActive(true);
             text1.SetActive(false);
+            text2.SetActive(false);
+            text3.SetActive(false);
+            text4.SetActive(false);
+            current = 6;
         }
-        if (current == 0)
+        else if (current == 0)
         {
             text1.SetActive(false);
             text2.SetActive(true);
