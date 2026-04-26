@@ -6,6 +6,8 @@ TagManager:
   tags:
   - floor
   - Dialoguebox
+  - Npc
+  - spawnpoint
   layers:
   - Default
   - TransparentFX

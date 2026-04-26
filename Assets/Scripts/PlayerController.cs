@@ -51,6 +51,7 @@ public class Collision : MonoBehaviour
         if (jump.IsPressed() && onGround)
         {
             MyCharacter.linearVelocity = new Vector3(0f, jumpSpeed, 0f);
+            gameObject.GetComponent<AudioSource>().Play();
             onGround = false;
         }
         else if (!jump.IsPressed() && !onGround)
@@ -61,6 +62,7 @@ public class Collision : MonoBehaviour
         {
             //MyCharacter.AddForce(0f, jumpSpeed - 15f , 0f, ForceMode.VelocityChange);
             MyCharacter.linearVelocity = new Vector3(0f, jumpSpeed / (3/2), 0f);
+            gameObject.GetComponent<AudioSource>().Play();
             canDoubleJump = false;
             HasDoubleJumped = true;
             

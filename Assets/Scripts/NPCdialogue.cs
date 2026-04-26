@@ -9,10 +9,7 @@ public class NPCdialogue : MonoBehaviour
     [SerializeField] private GameObject text2;
     [SerializeField] private GameObject text3;
     [SerializeField] private GameObject text4;
-    private bool text1active = false;
-    private bool text2active = false;
-    private bool text3active = false;
-    private bool text4active = false;
+    private int current = 0;
     InputAction talk;
     [SerializeField] private CoinCounter coinCounter;
     void Start()
@@ -57,11 +54,35 @@ public class NPCdialogue : MonoBehaviour
 
     private void Performed(InputAction.CallbackContext obj)
     {
-        if ()
+        
     }
 
     private void Started(InputAction.CallbackContext obj)
     {
-        throw new System.NotImplementedException();
+        if (current == 0)
+        {
+            text1.SetActive(false);
+            text2.SetActive(true);
+            current++;
+        }
+        else if (current == 1)
+        {
+            text2.SetActive(false);
+            text3.SetActive(true);
+            current++;
+        }
+        else if (current == 2)
+        {
+            text3.SetActive(false);
+            text4.SetActive(true);
+            current++;
+        }
+        else if (current == 3)
+        {
+            canvas.SetActive(false);
+            text1.SetActive(true);
+            text4.SetActive(false);
+            current = 0;
+        }
     }
 }

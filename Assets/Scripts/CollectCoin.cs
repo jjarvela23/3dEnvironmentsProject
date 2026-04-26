@@ -4,9 +4,10 @@ public class CollectCoin : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     [SerializeField] private CoinCounter CoinCounter;
+    private GameObject audioplayer;
     void Start()
     {
-        
+        audioplayer = GameObject.FindGameObjectWithTag("spawnpoint");
     }
 
     // Update is called once per frame
@@ -19,6 +20,7 @@ public class CollectCoin : MonoBehaviour
     {
         Debug.Log("touching coin");
         CoinCounter.GetComponent<CoinCounter>().AddCoin();
-        gameObject.GetComponent<AudioSource>().Play();
+        audioplayer.GetComponent<AudioSource>().Play();
+        gameObject.SetActive(false);
     }
 }
